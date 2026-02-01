@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="logo.png" type="image/png">
+  <title>Laconia — Built to Last. Installed with Discipline.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0B0D10;
+      --white: #F7F7F7;
+      --gray: #9AA3AE;
+      --accent: #B08D57;
+      --transition: 0.2s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Space Grotesk', -apple-system, sans-serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 5rem 0;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1.25rem 0;
+      background: var(--black);
+      z-index: 100;
+      border-bottom: 1px solid rgba(247, 247, 247, 0.06);
+    }
+
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .logo-link .logo {
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .logo-tagline {
+      font-size: 0.625rem;
+      letter-spacing: 0.2em;
+      color: var(--gray);
+      margin-top: 0.15rem;
+    }
+
+    .header-cta {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .header-logo {
+      height: 38px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+      transform: scale(2.2) translateX(-8px);
+      transform-origin: left center;
+    }
+
+    .header-cta .btn {
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 70vh;
+      }
+
+      .logo-tagline {
+        display: none;
+      }
+    }
+
+    /* ---- Hero ---- */
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 0 4rem;
+      background: linear-gradient(rgba(11, 13, 16, 0.75), rgba(11, 13, 16, 0.85)), url('herebackground.png') center/cover no-repeat;
+      color: var(--white);
+    }
+
+    .hero-tagline {
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin: 0 0 1.5rem;
+      max-width: 14ch;
+    }
+
+    .hero-subheadline {
+      font-size: clamp(1rem, 2vw, 1.125rem);
+      color: var(--gray);
+      max-width: 42ch;
+      margin: 0 0 2.5rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.875rem 1.75rem;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), transform var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent);
+      color: var(--white);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--gray);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--white);
+      color: var(--white);
+    }
+
+    .hero-motto {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(154, 163, 174, 0.2);
+      font-size: 0.8125rem;
+      color: var(--gray);
+    }
+
+    /* ---- Services ---- */
+    .services {
+      background: var(--white);
+      padding: 3.5rem 0;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 2.25rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 900px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .service-card {
+      background: #0B0D10;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-left: 3px solid var(--accent);
+      padding: 1.5rem;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 320px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 8px 24px rgba(11, 13, 16, 0.2);
+    }
+
+    .service-card:hover .service-card-cta {
+      opacity: 1;
+    }
+
+    .service-card-image {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .service-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .service-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(11, 13, 16, 0.95) 0%, rgba(11, 13, 16, 0.6) 40%, rgba(11, 13, 16, 0.3) 100%);
+      z-index: 1;
+    }
+
+    .service-card-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-card h3 {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--white);
+      margin: 0 0 0.75rem;
+      line-height: 1.35;
+    }
+
+    .service-card-desc {
+      font-size: 0.8125rem;
+      color: var(--gray);
+      line-height: 1.5;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    .service-card-desc span {
+      display: block;
+    }
+
+    .service-card-cta {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: var(--accent);
+      margin-top: 1rem;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .services-footer {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(11, 13, 16, 0.1);
+      text-align: center;
+    }
+
+    .services-footer p {
+      font-size: 0.9375rem;
+      color: var(--gray);
+      margin: 0 0 1rem;
+      line-height: 1.5;
+    }
+
+    .services-footer .btn {
+      margin-top: 0.5rem;
+    }
+
+    /* ---- Why Laconia ---- */
+    .why-laconia {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .why-laconia .section-label { color: var(--gray); }
+    .why-laconia .section-title { color: var(--white); }
+
+    .why-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 1.5rem;
+      max-width: 560px;
+    }
+
+    .why-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      font-size: 1rem;
+    }
+
+    .why-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      margin-top: 0.6em;
+    }
+
+    /* ---- Process ---- */
+    .process {
+      background: var(--white);
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 900px) {
+      .process-steps {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .process-step {
+      position: relative;
+    }
+
+    .process-step-num {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .process-step h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 0 0.25rem;
+    }
+
+    .process-step p {
+      font-size: 0.875rem;
+      color: var(--gray);
+      margin: 0;
+    }
+
+    /* ---- Gallery ---- */
+    .gallery {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .gallery .section-label { color: var(--gray); }
+    .gallery .section-title { color: var(--white); }
+
+    .gallery-slider {
+      position: relative;
+      margin-top: 2rem;
+    }
+
+    .gallery-track-container {
+      overflow: hidden;
+    }
+
+    .gallery-track {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-slide {
+      flex: 0 0 100%;
+      min-width: 0;
+      padding: 0 0.5rem;
+    }
+
+    .gallery-slide-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 1rem;
+      aspect-ratio: 2/1;
+    }
+
+    @media (max-width: 900px) {
+      .gallery-slide-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .gallery-slide-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        aspect-ratio: 4/3;
+      }
+    }
+
+    .gallery-slide .gallery-item {
+      background: rgba(247, 247, 247, 0.06);
+      border: 1px solid rgba(247, 247, 247, 0.1);
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .gallery-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(247, 247, 247, 0.3);
+      background: rgba(11, 13, 16, 0.8);
+      color: var(--white);
+      cursor: pointer;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color var(--transition), background var(--transition);
+      z-index: 10;
+    }
+
+    .gallery-btn:hover {
+      border-color: var(--accent);
+      background: rgba(11, 13, 16, 0.95);
+    }
+
+    .gallery-btn-prev {
+      left: -0.5rem;
+    }
+
+    .gallery-btn-next {
+      right: -0.5rem;
+    }
+
+    @media (max-width: 600px) {
+      .gallery-btn-prev { left: 0.25rem; }
+      .gallery-btn-next { right: 0.25rem; }
+      .gallery-btn { width: 36px; height: 36px; font-size: 1rem; }
+    }
+
+    /* ---- Service Areas ---- */
+    .areas {
+      padding: 3rem 0;
+    }
+
+    .areas-inline {
+      font-size: 0.9375rem;
+      color: var(--gray);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ---- Contact ---- */
+    .contact {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .contact .section-label { color: var(--gray); }
+    .contact .section-title { color: var(--white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 700px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      background: transparent;
+      border: 1px solid rgba(247, 247, 247, 0.2);
+      color: var(--white);
+      resize: vertical;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: var(--gray);
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .contact-form .btn-primary {
+      align-self: flex-start;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-info a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.125rem;
+      transition: color var(--transition);
+    }
+
+    .contact-info a:hover {
+      color: var(--accent);
+    }
+
+    /* ---- Footer ---- */
+    footer {
+      padding: 2rem 0;
+      border-top: 1px solid rgba(11, 13, 16, 0.1);
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--gray);
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="#" class="logo-link">
+        <img src="logo.png" alt="Laconia" class="header-logo">
+        <span class="logo">LACONIA<div class="logo-tagline">REIMAGINED.</div></span>
+      </a>
+      <div class="header-cta">
+        <a href="#contact" class="btn btn-primary">Get a Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <p class="hero-tagline">DISCIPLINE BUILDS.</p>
+      <h1>Built to last. Installed with discipline.</h1>
+      <p class="hero-subheadline">Exterior & interior construction installs — precise execution, clean finishes, and reliable timelines.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Get a Quote</a>
+        <a href="tel:+15551234567" class="btn btn-outline">Call Now</a>
+      </div>
+      <p class="hero-motto">No shortcuts. No excuses. Just strong work.</p>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services">
+    <div class="container">
+      <p class="section-label">Services</p>
+      <h2 class="section-title">Built with discipline.</h2>
+      <div class="services-grid">
+        <article class="service-card" onclick="location.href='#contact'">
+          <div class="service-card-image">
+            <img src="service-cards/1.png" alt="">
+          </div>
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <h3>Architectural Exterior Wall Panel Installation</h3>
+            <p class="service-card-desc">
+              <span>Precision panel alignment.</span>
+              <span>Secure fastening systems.</span>
+              <span>Long-term exterior durability.</span>
+            </p>
+            <span class="service-card-cta">Request estimate →</span>
+          </div>
+        </article>
+        <article class="service-card" onclick="location.href='#contact'">
+          <div class="service-card-image">
+            <img src="service-cards/2.png" alt="">
+          </div>
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <h3>Commercial Drop Ceiling & HVAC Rough-In</h3>
+            <p class="service-card-desc">
+              <span>Grid alignment precision.</span>
+              <span>HVAC integration clean.</span>
+              <span>Commercial-grade execution.</span>
+            </p>
+            <span class="service-card-cta">Request estimate →</span>
+          </div>
+        </article>
+        <article class="service-card" onclick="location.href='#contact'">
+          <div class="service-card-image">
+            <img src="service-cards/3.png" alt="">
+          </div>
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <h3>Pressure-Treated Wood Deck & Stair System</h3>
+            <p class="service-card-desc">
+              <span>Structural framing solid.</span>
+              <span>Stair geometry exact.</span>
+              <span>Weather-resistant build.</span>
+            </p>
+            <span class="service-card-cta">Request estimate →</span>
+          </div>
+        </article>
+        <article class="service-card" onclick="location.href='#contact'">
+          <div class="service-card-image">
+            <img src="service-cards/4.png" alt="">
+          </div>
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <h3>Outdoor Timber Pavilion Construction</h3>
+            <p class="service-card-desc">
+              <span>Timber frame integrity.</span>
+              <span>Roof structure engineered.</span>
+              <span>Built for elements.</span>
+            </p>
+            <span class="service-card-cta">Request estimate →</span>
+          </div>
+        </article>
+        <article class="service-card" onclick="location.href='#contact'">
+          <div class="service-card-image">
+            <img src="service-cards/5.png" alt="">
+          </div>
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <h3>Custom Wood Privacy Fence (Diagonal Slat)</h3>
+            <p class="service-card-desc">
+              <span>Structural framing.</span>
+              <span>Exact diagonal spacing.</span>
+              <span>Clean modern privacy.</span>
+            </p>
+            <span class="service-card-cta">Request estimate →</span>
+          </div>
+        </article>
+        <article class="service-card" onclick="location.href='#contact'">
+          <div class="service-card-image">
+            <img src="service-cards/6.png" alt="">
+          </div>
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <h3>Custom Pergola-Style Privacy Fence System</h3>
+            <p class="service-card-desc">
+              <span>Pergola structure meets fence.</span>
+              <span>Spacing controlled.</span>
+              <span>Architectural integration.</span>
+            </p>
+            <span class="service-card-cta">Request estimate →</span>
+          </div>
+        </article>
+        <article class="service-card" onclick="location.href='#contact'">
+          <div class="service-card-image">
+            <img src="service-cards/7.png" alt="">
+          </div>
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <h3>Interior Substrate Wall Installation (OSB)</h3>
+            <p class="service-card-desc">
+              <span>Substrate flat and true.</span>
+              <span>Ready for tile or panels.</span>
+              <span>No compromise on prep.</span>
+            </p>
+            <span class="service-card-cta">Request estimate →</span>
+          </div>
+        </article>
+        <article class="service-card" onclick="location.href='#contact'">
+          <div class="service-card-image">
+            <img src="service-cards/8.png" alt="">
+          </div>
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <h3>Drywall Installation & Finishing</h3>
+            <p class="service-card-desc">
+              <span>Complex angles handled.</span>
+              <span>Built-ins integrated cleanly.</span>
+              <span>Flat, controlled finish.</span>
+            </p>
+            <span class="service-card-cta">Request estimate →</span>
+          </div>
+        </article>
+      </div>
+      <div class="services-footer">
+        <p>Not sure what you need?<br>Describe the project. We'll define the solution.</p>
+        <a href="#contact" class="btn btn-primary">Get a Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Laconia -->
+  <section class="why-laconia">
+    <div class="container">
+      <p class="section-label">The Spartan Way</p>
+      <h2 class="section-title">Why Laconia</h2>
+      <ul class="why-list">
+        <li>Precision-first installation</li>
+        <li>Clean jobsite. Controlled process.</li>
+        <li>Transparent scope & clear timelines</li>
+        <li>Commercial-grade standards</li>
+        <li>Finish quality you can measure</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="process">
+    <div class="container">
+      <p class="section-label">How We Work</p>
+      <h2 class="section-title">Process</h2>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="process-step-num">01</div>
+          <h3>Estimate</h3>
+          <p>Scope + photos + clear price, no surprises</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-num">02</div>
+          <h3>Plan</h3>
+          <p>Timeline, materials, execution</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-num">03</div>
+          <h3>Build</h3>
+          <p>Disciplined execution, daily progress</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-num">04</div>
+          <h3>Final Walk-through</h3>
+          <p>Punch list, done right</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery">
+    <div class="container">
+      <p class="section-label">Proof</p>
+      <h2 class="section-title">Work</h2>
+      <div class="gallery-slider">
+        <button class="gallery-btn gallery-btn-prev" type="button" aria-label="Previous">‹</button>
+        <button class="gallery-btn gallery-btn-next" type="button" aria-label="Next">›</button>
+        <div class="gallery-items-source" style="display:none">
+          <div class="gallery-item"><img src="work/1w.png" alt="Project"></div>
+          <div class="gallery-item"><img src="work/2w.png" alt="Project"></div>
+          <div class="gallery-item"><img src="work/3w.png" alt="Project"></div>
+          <div class="gallery-item"><img src="work/4w.png" alt="Project"></div>
+          <div class="gallery-item"><img src="work/5w.png" alt="Project"></div>
+          <div class="gallery-item"><img src="work/6w.png" alt="Project"></div>
+          <div class="gallery-item"><img src="work/7w.png" alt="Project"></div>
+          <div class="gallery-item"><img src="work/8w.png" alt="Project"></div>
+          <div class="gallery-item"><img src="work/9w.png" alt="Project"></div>
+          <div class="gallery-item"><img src="work/10w.png" alt="Project"></div>
+          
+          
+        </div>
+        <div class="gallery-track-container">
+          <div class="gallery-track"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Areas -->
+  <section class="areas">
+    <div class="container">
+      <p class="section-label">Where We Build</p>
+      <p class="areas-inline">Boston · Cambridge · Somerville · Arlington · Medford · Greater Boston · Metro West · North Shore · South Shore</p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <p class="section-label">Start a Project</p>
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-grid">
+        <form class="contact-form" action="https://formspree.io/f/mwvqoeng" method="POST">
+          <input type="text" name="name" placeholder="Name" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="tel" name="phone" placeholder="Phone">
+          <textarea name="message" placeholder="Project details, location, timeline" rows="4"></textarea>
+          <button type="submit" class="btn btn-primary">Get a Quote</button>
+        </form>
+        <div class="contact-info">
+          <a href="tel:+1 (984) 326-1205">+1 (984) 326-1205</a>
+          <a href="mailto:danujosan734@gmail.com">danujosan734@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 Laconia</p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var slider = document.querySelector('.gallery-slider');
+      if (!slider) return;
+
+      var track = slider.querySelector('.gallery-track');
+      var source = slider.querySelector('.gallery-items-source');
+      var prevBtn = slider.querySelector('.gallery-btn-prev');
+      var nextBtn = slider.querySelector('.gallery-btn-next');
+
+      if (!source || !track) return;
+
+      function getImagesPerPage() {
+        var w = window.innerWidth;
+        if (w > 900) return 6;
+        if (w > 600) return 4;
+        return 1;
+      }
+
+      function createSlide(p, perPage, items) {
+        var slide = document.createElement('div');
+        slide.className = 'gallery-slide';
+        var grid = document.createElement('div');
+        grid.className = 'gallery-slide-grid';
+        for (var i = 0; i < perPage; i++) {
+          var idx = (p * perPage + i) % items.length;
+          grid.appendChild(items[idx].cloneNode(true));
+        }
+        slide.appendChild(grid);
+        return slide;
+      }
+
+      function buildSlides() {
+        var items = Array.from(source.querySelectorAll('.gallery-item'));
+        if (items.length === 0) return;
+
+        var perPage = getImagesPerPage();
+        var totalRealPages = Math.ceil(items.length / perPage);
+        if (totalRealPages <= 1) {
+          slider._totalPages = 1;
+          slider._totalWithClones = 1;
+          slider._firstRealIndex = 0;
+          track.innerHTML = '';
+          track.appendChild(createSlide(0, perPage, items));
+          updateTransform();
+          return;
+        }
+
+        slider._totalPages = totalRealPages;
+        slider._currentSlide = 0;
+
+        track.innerHTML = '';
+        for (var p = 0; p < totalRealPages; p++) {
+          track.appendChild(createSlide(p, perPage, items));
+        }
+        track.appendChild(createSlide(0, perPage, items));
+
+        updateTransform();
+      }
+
+      function onTransitionEnd() {
+        if (slider._totalPages <= 1) return;
+        if (slider._currentSlide === slider._totalPages) {
+          slider._currentSlide = 0;
+          updateTransform(true);
+          requestAnimationFrame(function() { track.style.transition = ''; });
+        }
+      }
+
+      track.addEventListener('transitionend', onTransitionEnd);
+
+      function updateTransform(noTransition) {
+        var total = slider._totalPages || 1;
+        if (total <= 1) {
+          track.style.transition = '';
+          track.style.transform = 'translateX(0)';
+          prevBtn.style.visibility = 'hidden';
+          nextBtn.style.visibility = 'hidden';
+          return;
+        }
+        var slide = slider._currentSlide || 0;
+        if (noTransition) {
+          track.style.transition = 'none';
+        } else {
+          track.style.transition = '';
+        }
+        track.style.transform = 'translateX(-' + (slide * 100) + '%)';
+        prevBtn.style.visibility = slide === 0 ? 'hidden' : 'visible';
+        nextBtn.style.visibility = 'visible';
+      }
+
+      function goPrev() {
+        if (slider._totalPages <= 1) return;
+        if (slider._currentSlide === 0) return;
+        slider._currentSlide = (slider._currentSlide || 0) - 1;
+        updateTransform();
+      }
+
+      function goNext() {
+        if (slider._totalPages <= 1) return;
+        slider._currentSlide = (slider._currentSlide || 0) + 1;
+        updateTransform();
+      }
+
+      prevBtn.addEventListener('click', goPrev);
+      nextBtn.addEventListener('click', goNext);
+
+      var resizeTimer;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(buildSlides, 150);
+      });
+
+      buildSlides();
+    })();
+  </script>
+</body>
+</html>
